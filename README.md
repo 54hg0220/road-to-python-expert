@@ -5,7 +5,7 @@
 
 ---
 
-## 🟢 基础语法与核心概念
+## 🟢 1.basic-syntax 基础语法与核心概念 
 
 ### 基础  
 - 变量、数据类型（`int`, `float`, `str`, `bool`）  
@@ -45,7 +45,7 @@
 ---
 
 
-## 🟡 数据结构与内建类型
+## 🟡 2.data-structures - 数据结构与内建类型
 
 ### 基础
 - 列表（List）操作与切片
@@ -65,7 +65,7 @@
 
 ---
 
-## 🔵 函数式编程与迭代器
+## 🔵 3.functional-iterators- 函数式编程与迭代器
 
 ### 基础
 - 匿名函数（`lambda`）
@@ -82,7 +82,7 @@
 
 ---
 
-## 🟣 面向对象编程（OOP）
+## 🟣 4.oop - 面向对象编程（OOP）
 
 ### 基础
 - 类与对象的定义、`self`
@@ -103,7 +103,7 @@
 
 ---
 
-## 🟠 装饰器与闭包
+## 🟠 5.decorators-closures - 装饰器与闭包
 
 ### 基础
 - 闭包（Closure）原理
@@ -119,7 +119,7 @@
 
 ---
 
-## 🟤 类型注解与静态检查
+## 🟤 6.typing-static-checks - 类型注解与静态检查
 
 ### 基础
 - 基本类型注解（`int`, `str`, `List[int]` 等）
@@ -137,7 +137,7 @@
 
 ---
 
-## ⚫ 异常处理与上下文管理
+## ⚫ 7.exceptions-context - 异常处理与上下文管理
 
 ### 基础
 - `try-except-finally` 结构
@@ -152,7 +152,7 @@
 
 ---
 
-## ⚪ 模块化、打包与虚拟环境
+## ⚪ 8.packaging-env - 模块化、打包与虚拟环境
 
 ### 基础
 - Python 模块与包结构
@@ -169,7 +169,7 @@
 
 ---
 
-## 🧩 高级特性与底层机制
+## 🧩 9.advanced-internals - 高级特性与底层机制
 
 ### 基础
 - 对象引用与可变性
@@ -187,7 +187,7 @@
 
 ---
 
-## 🧪 测试、调试与质量
+## 🧪 10.testing-debugging - 测试、调试与质量
 
 ### 基础
 - 单元测试（`unittest`, `pytest`）
@@ -205,7 +205,7 @@
 
 ---
 
-## 🧱 架构与设计模式
+## 🧱 11.architecture-patterns - 架构与设计模式
 
 ### 基础
 - 依赖注入（Dependency Injection）
@@ -223,7 +223,7 @@
 
 ---
 
-## 🌐 异步与并发
+## 🌐 12.async-concurrency - 异步与并发
 
 ### 基础
 - `async` / `await` 基础
@@ -241,7 +241,7 @@
 
 ---
 
-## 🌍 Web & API 开发（FastAPI 核心）
+## 🌍 13.web-fastapi - Web & API 开发（FastAPI 核心）
 
 ### 基础
 - 路径、查询、表单、多文件上传、流式响应
@@ -256,7 +256,7 @@
 
 ---
 
-## 📊 数据处理与科学计算
+## 📊 14.data-science - 数据处理与科学计算
 
 ### 基础
 - NumPy broadcasting, ufunc, strides 调优
@@ -267,7 +267,7 @@
 
 ---
 
-## 📦 常用第三方库速览
+## 📦 15.third-party-libs - 常用第三方库速览
 
 ### 基础
 - HTTP 客户端：httpx, aiohttp
@@ -280,7 +280,7 @@
 
 ---
 
-## 🚀 部署、运维与性能
+## 🚀 16.deployment-performance - 部署、运维与性能
 
 ### 基础
 - uWSGI / Gunicorn / Hypercorn 性能调参
@@ -293,7 +293,7 @@
 
 ---
 
-## 🔐 安全与最佳实践
+## 🔐 17.security-best-practices - 安全与最佳实践
 
 ### 基础
 - OWASP Top-10 in Python Web (CSRF, SSRF, IDOR)
