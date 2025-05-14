@@ -28,8 +28,7 @@
 
 ### 进阶  
 - 变量作用域（LEGB 规则）、闭包捕获原理  
-- 解包技巧（链式赋值、星号解包、交换变量）  
-- 真假值、短路求值、三元表达式 `x if cond else y`  
+- 解包技巧（链式赋值、星号解包、交换变量）
 - `enumerate`、`zip`、`any` / `all`、`sorted(key=…)`、`min/max(key=…)`  
 - Walrus 赋值表达式 `:=`（3.8+）  
 - 生成器表达式与惰性计算（`sum(x*x for x in big_iter)`）  

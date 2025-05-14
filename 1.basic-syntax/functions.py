@@ -65,3 +65,18 @@ send_notification(
 
 # 3️⃣ 匿名函数（lambda）
 # lambda 是一种简洁的函数定义方式，适合写一些简单的一行函数。
+add = lambda x, y: x + y
+print(add(3, 5))  # 输出 8
+
+names = ["Alice", "Bob", "Charlie"]
+# 按名字长度排序
+sorted_names = sorted(names, key=lambda name: len(name))
+print(sorted_names)  # 输出 ['Bob', 'Alice', 'Charlie']
+
+nums = [1, 2, 3, 4]
+squared = list(map(lambda x: x**2, nums))
+print(squared)  # 输出 [1, 4, 9, 16]
+
+nums = [1, 2, 3, 4, 5, 6]
+even = list(filter(lambda x: x % 2 == 0, nums))
+print(even)  # 输出 [2, 4, 6]

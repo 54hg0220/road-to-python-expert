@@ -33,3 +33,14 @@ print(url.strip("/"))  # 输出 'https:example.com'
 filename = "report.pdf"
 print(filename.endswith(".pdf"))  # True
 print(filename.startswith("report"))  # True
+
+# f string
+name = "Guan"
+age = 28
+print(f"My name is {name} and I am {age} years old.")
+# 输出：My name is Guan and I am 28 years old.
+
+pi = 3.1415926
+print(f"{pi:.2f}")  # 保留两位小数：3.14
+print(f"{pi:10.2f}")  # 宽度10，右对齐：      3.14
+print(f"{pi:<10.2f}")  # 宽度10，左对齐：3.14
