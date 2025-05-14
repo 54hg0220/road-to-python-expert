@@ -33,7 +33,32 @@ def print_info(**kwargs):
         print(f"{key}: {value}")
 
 
+# 对所有传进去的args 进行同样的操作
+def log_message(level, *args):
+    message = " ".join(str(arg) for arg in args)
+    print(f"[{level.upper()}] {message}")
+
+
+log_message("info", "Guan", "logged", "in")
+
 print_info(name="小王", age=30, city="北京")
+
+
+def send_notification(*recipients, **options):
+    message = options.get("message", "您有一条新通知")
+    urgent = options.get("urgent", False)
+    method = options.get("method", "email")
+
+    for recipient in recipients:
+        print(f"发送给 {recipient}：{message}（方式：{method}，紧急：{urgent}）")
+
+
+send_notification(
+    "Guan",
+    "Wei",
+    "Ash",
+)
+
 
 # ✅ 混合使用顺序（推荐记忆口诀）：
 # **普通参数 → 默认参数 → *args → kwargs
