@@ -48,4 +48,5 @@ transposed = [[row[i] for row in matrix] for i in range(len(matrix[0]))]
 
 text = "Python is great and python is fun"
 unique_words = {word.lower() for word in text.split()}
+print(unique_words)
 # 输出: {'python', 'is', 'great', 'and', 'fun'}
