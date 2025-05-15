@@ -97,3 +97,81 @@ print("生成器表达式占用内存（单位：字节）：", sys.getsizeof(ge
 # 生成器表达式（lazy）：一次只生成一个值，处理完就丢掉，占用的是常数级内存。
 #
 # 列表推导式（eager）：一次性生成所有值，占用的是线性内存（数量越多占用越多）。
+
+# 🧠 什么是迭代器协议（Iterator Protocol）？
+# 在 Python 中，迭代器协议指的是一个对象必须实现两个方法：
+#
+# ✅ 1. __iter__()
+# 返回迭代器本身（对象要“可迭代”）
+#
+# ✅ 2. __next__()
+# 每次调用返回下一个元素，如果没有了就抛出 StopIteration 异常。
+#
+# 只要一个对象同时实现了这两个方法，它就是一个合法的迭代器（iterator）。
+nums = [1, 2, 3]
+it = iter(nums)  # 得到一个迭代器对象
+
+print(next(it))  # 1
+print(next(it))  # 2
+print(next(it))  # 3
+# print(next(it))  # ❌ 抛出 StopIteration
+# 🔹 iter(obj)
+# 这是 Python 的内置函数，它会调用对象的 __iter__() 方法。
+it = iter([1, 2, 3])  # 实际上等价于 [1, 2, 3].__iter__()
+
+
+# ✅ 方法一：用普通类手动实现迭代器协议
+class CountDown:
+    def __init__(self, start):
+        self.current = start
+
+    def __iter__(self):
+        return self  # 返回迭代器自身
+
+    def __next__(self):
+        if self.current <= 0:
+            raise StopIteration
+        self.current -= 1
+        return self.current + 1
+
+
+# ✅ 方法二：用生成器函数（自动实现迭代器协议）
+def countdown(start):
+    while start > 0:
+        yield start
+        start -= 1
+
+
+# 🧠 背后发生了什么？
+# 当你使用 yield 时：
+#
+# Python 自动创建一个类，实现了 __iter__() 和 __next__()；
+#
+# 每次 next() 调用都会暂停函数运行，保存状态；
+#
+# 再次 next() 会从上一次的 yield 后继续执行。
+import time
+
+
+def concat_with_plus(n):
+    s = ""
+    for i in range(n):
+        s += f"{i}\n"
+    return s
+
+
+def concat_with_yield(n):
+    def gen():
+        for i in range(n):
+            yield f"{i}\n"
+
+    return "".join(gen())
+
+
+start = time.time()
+concat_with_plus(100_000)
+print("+= cost:", time.time() - start)
+
+start = time.time()
+concat_with_yield(100_000)
+print("yield cost:", time.time() - start)
