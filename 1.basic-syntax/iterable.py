@@ -160,6 +160,7 @@ def concat_with_plus(n):
     return s
 
 
+# comment
 def concat_with_yield(n):
     def gen():
         for i in range(n):
