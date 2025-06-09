@@ -137,6 +137,23 @@ class LinkedList:
             current = current.next
         print("None")
 
+    # Reverse the linked list
+    # O(n) operation since we need to traverse the entire list to reverse it.
+    def reverse(self):
+        current = self.head
+        self.head = self.tail
+        self.tail = current
+        # starting from the head, we will reverse the pointers
+        prev = None
+        for _ in range(self.length):
+            next = current.next # who is the next node
+            current.next = prev # reverse the pointer
+            prev = current # move prev to current
+            current = next # move current to next
+
+        return True
+
+
 # Linked List vs Lists
 # Append operation in linked list is O(1) if we keep track of the last node.
 # Lists in Python are dynamic arrays, which means appending is O(1) on average,
@@ -163,3 +180,10 @@ my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
 # my_linked_list.print_list()  # Output: 10 -> 20 -> None
 # print(my_linked_list.pop())  # Output: 10
 # my_linked_list.print_list()  # Output: None
+my_linked_list2 = LinkedList(1)
+my_linked_list2.append(2)
+my_linked_list2.append(3)
+my_linked_list2.append(4)
+my_linked_list2.reverse()
+print("Reversed Linked List:")
+my_linked_list2.print_list()  # Output: 4 -> 3 -> 2 -> 1 -> None
