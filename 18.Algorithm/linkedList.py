@@ -175,7 +175,7 @@ class LinkedList:
             if slow == fast:
                 return True
         return False
-    
+
     # Leetcode 2: Find the kth to last element in the linked list
     # O(n) operation since we need to traverse the entire list to find the kth to last element.
     # Using two pointers, one at the kth position and the other at the head.
@@ -190,7 +190,16 @@ class LinkedList:
             slow = slow.next
             fast = fast.next
         return slow
-    
+
+    # Leetcode 17: LL binary to decimal conversion
+    # O(n) operation since we need to traverse the entire list to convert binary to decimal.
+    def binary_to_decimal(self):
+        current = self.head
+        decimal_value = 0
+        while current:
+            decimal_value = decimal_value*2+ current.value
+            current = current.next
+        return decimal_value
 
     # Leet code 83: Remove Duplicates from Sorted List
     # O(n) operation since we need to traverse the entire list to remove duplicates.
