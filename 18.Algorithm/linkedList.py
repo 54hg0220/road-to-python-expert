@@ -70,17 +70,59 @@ class LinkedList:
             current.next = None
         self.length -= 1
         return pop_value
-    # Delete a node by value
+    # Delete a node by index
     # O(n) operation since we may need to traverse the entire list to find the node.
+    def delete(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            self.pop_first()
+            return True
+        if index == self.length:
+            self.pop()
+            return True
+        pre = self.get(index - 1)
+        current = pre.next
+        pre.next = current.next  # Bypass the current node
+        current.next = None  # Clear the next pointer of the removed node
+        self.length -= 1
+        return current
 
+    # Get a node by index
+    # O(n) operation since we may need to traverse the list to find the node at the given index.
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        return current
 
-    # Search for a node by value
-    # O(n) operation since we may need to traverse the entire list to find the node.
-
+    # Set a node's value by index
+    # O(n) operation since we may need to traverse the list to find the node at the given index.
+    def set_value(self, index, value):
+        current = self.get(index)
+        if current is None:
+            return False
+        else:
+            current.value = value
+            return True
     
     # Insert a node after a specific node
     # O(n) operation since we may need to traverse the list to find the node after which to insert.
-
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        new_node = Node(value)
+        current = self.get(index - 1)
+        new_node.next = current.next
+        current.next = new_node
+        self.length += 1
+        return True
     
     # Insert a node before a specific node
     # O(n) operation since we may need to traverse the list to find the node before which to insert.
@@ -104,12 +146,20 @@ class LinkedList:
 # Lookups in Lists are O(1) since they are implemented as dynamic arrays.
 my_linked_list = LinkedList(10)
 my_linked_list.append(20)
-my_linked_list.print_list()  # Output: 10 -> 20 -> None
-print(my_linked_list.pop_first())  # Output: 10
-my_linked_list.print_list()  # Output: 20 -> None
-print(my_linked_list.pop_first())  # Output: 20
-my_linked_list.print_list()  # Output: None
-# print(my_linked_list.pop())  # Output: 20
-# my_linked_list.print_list()  # Output: 10 -> None
+my_linked_list.append(30)
+my_linked_list.print_list()  # Output: 10 -> 20 -> 30 -> None
+print(my_linked_list.get(2).value)  # Output: 30
+my_linked_list.set_value(1, 25)
+my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
+my_linked_list.insert(1, 15)
+my_linked_list.print_list()  # Output: 10 -> 15 -> 25 -> 30 -> None
+my_linked_list.delete(1)
+my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
+# print(my_linked_list.pop_first())  # Output: 10
+# my_linked_list.print_list()  # Output: 20 -> 30 -> None
+# print(my_linked_list.pop_first())  # Output: 20
+# my_linked_list.print_list()  # Output: 30 -> None
+# print(my_linked_list.pop())  # Output: 30
+# my_linked_list.print_list()  # Output: 10 -> 20 -> None
 # print(my_linked_list.pop())  # Output: 10
 # my_linked_list.print_list()  # Output: None
