@@ -11,12 +11,21 @@ class LinkedList:
         self.tail = new_node  # Keep track of the tail for O(1) append operations
         self.length = 1  # Keep track of the length of the linked list
 
+    # Insert at the beginning of the linked list
+    # O(1) operation since we just need to update the head pointer.
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+
     # Insert at the end of the linked list
     # O(n) if we traverse the list to find the last node, O(1) if we keep track of the last node.
-
-
-    #  Insert at the beginning of the linked list
-    # O(1) operation since we just need to change the head pointer.
     def append(self, value):
         new_node = Node(value)
         if not self.head:
@@ -80,3 +89,7 @@ class LinkedList:
 my_linked_list = LinkedList(10)
 my_linked_list.append(20)
 my_linked_list.print_list()  # Output: 10 -> 20 -> None
+print(my_linked_list.pop())  # Output: 20
+my_linked_list.print_list()  # Output: 10 -> None
+print(my_linked_list.pop())  # Output: 10
+my_linked_list.print_list()  # Output: None
