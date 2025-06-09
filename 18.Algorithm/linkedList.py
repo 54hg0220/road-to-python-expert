@@ -28,7 +28,7 @@ class LinkedList:
     # O(n) if we traverse the list to find the last node, O(1) if we keep track of the last node.
     def append(self, value):
         new_node = Node(value)
-        if not self.head:
+        if self.length == 0:
             self.head = new_node
             self.tail = new_node
         else:
@@ -54,6 +54,22 @@ class LinkedList:
             self.tail = None
         return current.value
 
+    # Pop the first node from the linked list
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        
+        current = self.head
+        pop_value = current.value
+        # update cursor
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = current.next
+            current.next = None
+        self.length -= 1
+        return pop_value
     # Delete a node by value
     # O(n) operation since we may need to traverse the entire list to find the node.
 
@@ -89,7 +105,11 @@ class LinkedList:
 my_linked_list = LinkedList(10)
 my_linked_list.append(20)
 my_linked_list.print_list()  # Output: 10 -> 20 -> None
-print(my_linked_list.pop())  # Output: 20
-my_linked_list.print_list()  # Output: 10 -> None
-print(my_linked_list.pop())  # Output: 10
+print(my_linked_list.pop_first())  # Output: 10
+my_linked_list.print_list()  # Output: 20 -> None
+print(my_linked_list.pop_first())  # Output: 20
 my_linked_list.print_list()  # Output: None
+# print(my_linked_list.pop())  # Output: 20
+# my_linked_list.print_list()  # Output: 10 -> None
+# print(my_linked_list.pop())  # Output: 10
+# my_linked_list.print_list()  # Output: None
