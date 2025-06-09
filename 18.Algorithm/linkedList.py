@@ -178,10 +178,41 @@ class LinkedList:
     
     # Leetcode 2: Find the kth to last element in the linked list
     # O(n) operation since we need to traverse the entire list to find the kth to last element.
+    # Using two pointers, one at the kth position and the other at the head.
     def find_kth_to_last(self, k):
         slow = self.head
         fast = self.head
-        
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+    
+
+    # Leet code 83: Remove Duplicates from Sorted List
+    # O(n) operation since we need to traverse the entire list to remove duplicates.
+    # use set to keep track of seen values
+    # cannot use delete method
+    # since we need to remove duplicates without knowing the index.
+    def remove_duplicates(self):
+        if self.head is None:
+            return None
+        current = self.head
+        seen = set()
+        seen.add(current.value)
+        while current.next:
+            if current.next.value in seen:
+                # remove the next node
+                current.next = current.next.next
+                self.length -= 1
+            else:
+                seen.add(current.next.value)
+                current = current.next
+        return self.head
+
 # Linked List vs Lists
 # Append operation in linked list is O(1) if we keep track of the last node.
 # Lists in Python are dynamic arrays, which means appending is O(1) on average,
@@ -192,14 +223,17 @@ class LinkedList:
 my_linked_list = LinkedList(10)
 my_linked_list.append(20)
 my_linked_list.append(30)
+my_linked_list.append(30)
 my_linked_list.print_list()  # Output: 10 -> 20 -> 30 -> None
-print(my_linked_list.get(2).value)  # Output: 30
-my_linked_list.set_value(1, 25)
-my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
-my_linked_list.insert(1, 15)
-my_linked_list.print_list()  # Output: 10 -> 15 -> 25 -> 30 -> None
-my_linked_list.delete(1)
-my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
+my_linked_list.remove_duplicates()
+my_linked_list.print_list()  # Output: 10 -> 20 -> 30 -> None
+# print(my_linked_list.get(2).value)  # Output: 30
+# my_linked_list.set_value(1, 25)
+# my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
+# my_linked_list.insert(1, 15)
+# my_linked_list.print_list()  # Output: 10 -> 15 -> 25 -> 30 -> None
+# my_linked_list.delete(1)
+# my_linked_list.print_list()  # Output: 10 -> 25 -> 30 -> None
 # print(my_linked_list.pop_first())  # Output: 10
 # my_linked_list.print_list()  # Output: 20 -> 30 -> None
 # print(my_linked_list.pop_first())  # Output: 20
