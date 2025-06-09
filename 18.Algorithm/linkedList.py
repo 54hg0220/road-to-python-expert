@@ -28,7 +28,19 @@ class LinkedList:
         self.length += 1
         return True
     
-
+    # Pop the last node from the linked list
+    def pop(self):
+        if self.length == 0:
+            return None
+        current = self.head
+        pre = self.head
+        while current.next:
+            pre = current
+            current = current.next
+        self.tail = pre  # Update the tail to the second last node
+        pre.next = None  # Remove the last node
+        self.length -= 1
+        return current.value
 
     # Delete a node by value
     # O(n) operation since we may need to traverse the entire list to find the node.
