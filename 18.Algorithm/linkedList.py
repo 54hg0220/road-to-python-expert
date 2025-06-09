@@ -40,6 +40,9 @@ class LinkedList:
         self.tail = pre  # Update the tail to the second last node
         pre.next = None  # Remove the last node
         self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
         return current.value
 
     # Delete a node by value
