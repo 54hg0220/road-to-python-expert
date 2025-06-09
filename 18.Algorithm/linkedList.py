@@ -170,14 +170,18 @@ class LinkedList:
         slow = self.head
         fast = self.head
         while fast and fast.next:
-            fast= fast.next.next
             slow = slow.next
-            if (slow == fast):
+            fast = fast.next.next
+            if slow == fast:
                 return True
-            else:
-                return False
-            
-
+        return False
+    
+    # Leetcode 2: Find the kth to last element in the linked list
+    # O(n) operation since we need to traverse the entire list to find the kth to last element.
+    def find_kth_to_last(self, k):
+        slow = self.head
+        fast = self.head
+        
 # Linked List vs Lists
 # Append operation in linked list is O(1) if we keep track of the last node.
 # Lists in Python are dynamic arrays, which means appending is O(1) on average,
