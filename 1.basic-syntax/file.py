@@ -39,3 +39,26 @@ with open("example.txt", "r", encoding="utf-8") as f:
         if not line:
             break
         print(line.strip())
+
+from pathlib import Path
+
+p = Path("/tmp/test.txt")
+
+new_path = p.parent / "newfile.txt"  # 拼接路径
+p.exists()
+p.is_file()
+p.read_text()
+p.write_text("hello")
+for file in Path(".").glob("*.py"):
+    print(file.name)
+
+# 推荐完全替代 os.path；
+#
+# 多用 / 运算符代替 os.path.join；
+#
+# .resolve() 获取绝对路径。
+
+# collections	构建高效数据结构，简化逻辑
+# itertools	懒计算、数据处理、组合排列、内存优化
+# functools	装饰器、缓存、偏函数、函数式编程
+# pathlib	更现代化、可读性强的文件路径管理

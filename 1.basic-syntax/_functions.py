@@ -80,3 +80,14 @@ print(squared)  # 输出 [1, 4, 9, 16]
 nums = [1, 2, 3, 4, 5, 6]
 even = list(filter(lambda x: x % 2 == 0, nums))
 print(even)  # 输出 [2, 4, 6]
+
+
+def greet(name):
+    return f"Hello, {name}!"
+
+
+def call_func(func, value):
+    return func(value)
+
+
+print(call_func(greet, "Alice"))  # 输出：Hello, Alice!
