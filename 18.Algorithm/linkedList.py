@@ -18,6 +18,7 @@ class LinkedList:
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
+
         else:
             new_node.next = self.head
             self.head = new_node
@@ -137,7 +138,7 @@ class LinkedList:
             current = current.next
         print("None")
 
-    # Reverse the linked list
+    # Leetcode 206: Reverse Linked List
     # O(n) operation since we need to traverse the entire list to reverse it.
     def reverse(self):
         current = self.head
@@ -153,6 +154,29 @@ class LinkedList:
 
         return True
 
+    # Leetcode 876:Find the middle of the linked list
+    # O(n) operation since we need to traverse the entire list to find the middle node.
+    def find_middle(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    # Leetcode 141: Detect Cycle in Linked List
+    # O(n) operation since we need to traverse the entire list to check for cycles.
+    def has_cycle(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            fast= fast.next.next
+            slow = slow.next
+            if (slow == fast):
+                return True
+            else:
+                return False
+            
 
 # Linked List vs Lists
 # Append operation in linked list is O(1) if we keep track of the last node.
